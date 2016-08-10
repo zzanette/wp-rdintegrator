@@ -16,7 +16,6 @@
 			$this->settings = $this->get();
 			
 			add_action( 'bp_core_activated_user', array($this,'rd_create_lead_on_bp_activated'), 10, 3 );
-			//add_action( 'bp_core_signup_user', array($this,'rd_create_lead_on_bp_signup'), 10, 5);
 			
 			add_action('profile_update', array($this,'rd_create_lead_without_activation'), 10, 1);
 			
@@ -153,19 +152,16 @@
 
 			if($this->is_not_user_lead($user_id)){
 				$this->set_data_user_lead_by('id', $user_id);
-		        // Ignorando campos desnecessários
-		        //$rdstation->ignore_fields = array('campo1', 'campo2', 'campo3');
 
-		        // Criando os leads
-		        $this->createLead();
-	    	}
+			        $this->createLead();
+		    	}
 		}
 
 		function rd_create_lead_on_bp_signup($user_id){
 			
 			$this->set_data_user_lead_by('buddypress', $user_id);
-	        // Criando os leads
-	        $this->createLead();	    	
+	        
+	        	$this->createLead();	    	
 		}
 
 		function rd_create_lead_without_activation($user_id){
@@ -173,13 +169,10 @@
 			$user = get_user_by('id',$user_id);
 			if(empty($user->user_activation_key) && $this->is_not_user_lead($user_id) && !empty($user->user_url)){
 
-					$this->set_data_user_lead_by('id', $user_id);
-			        // Ignorando campos desnecessários
-			        //$rdstation->ignore_fields = array('campo1', 'campo2', 'campo3');
-
-			        // Criando os leads
+				$this->set_data_user_lead_by('id', $user_id);
+			      
 			        $this->createLead();
-	    	}
+	    		}
 		}
 		function rd_mark_seal_on_order_completed($order_id){
 			 $order = new WC_Order( $order_id );
