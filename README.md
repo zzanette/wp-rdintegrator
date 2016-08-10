@@ -1,2 +1,2 @@
 # wp-rdintegrator
-Integrator to Wordpress and RdStation
+Plugin Integrator to Wordpress and RdStation
