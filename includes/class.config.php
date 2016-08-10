@@ -5,20 +5,11 @@ abstract class rdstation_config{
   var $version = '1.5';
   var $option = 'rd_station_integrate';
   var $security_key = 'rd_station_security';
-  /*var $social_options = array(
-    'facebook',
-    'google',
-    'twitter',
-    'linkedin'
-    );*/
+
   function get_version(){
     return $this->version;
   }
-  /*
-  function get_social_options(){
-    return $social_options;
-  }
-  */
+
   function get(){
     return get_option($this->option);
   }
